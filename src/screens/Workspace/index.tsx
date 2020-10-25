@@ -1,45 +1,20 @@
 import React, { useState } from 'react';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext } from 'react-beautiful-dnd';
 
-import { CreateCardText, ColumnContainer, Container } from './styles';
+import { Container, ScrollWrapper } from './styles';
 
-import { TaskType, ColumnType } from './types';
+import { ColumnType } from './types';
 
-import { Column } from './components/Column';
+import { Column } from './components/Column/Column';
+import { CreateColumn } from './components/CreateColumn';
 
-const itemsFromBackend: TaskType[] = [
-  { id: '1', content: 'First task' },
-  { id: '12', content: 'Second task' },
-  { id: '123', content: 'Third task' },
-  { id: '1234', content: 'Fourth task' },
-  { id: '12345', content: 'Fifth task' },
-];
+interface IProps {
+  columnsFromBackend: ColumnType[];
+}
 
-const columnsFromBackend: ColumnType[] = [
-  {
-    id: '12312313ghfjghfhgfd',
-    name: 'Requested',
-    items: itemsFromBackend,
-  },
-  {
-    id: '123123123',
-    name: 'To do',
-    items: [],
-  },
-  {
-    id: '123123131231',
-    name: 'In Progress',
-    items: [],
-  },
-  {
-    id: '12312313',
-    name: 'Done',
-    items: [],
-  },
-];
-
-const Workspace: React.FC = () => {
+const Workspace: React.FC<IProps> = ({ columnsFromBackend }: IProps) => {
   const [columns, setColumns] = useState(columnsFromBackend);
+  const handleSetColumns = (columns: ColumnType[]) => setColumns(columns);
 
   const onDragEnd = (result: any, columns: ColumnType[]) => {
     if (!result.destination) return;
@@ -85,20 +60,14 @@ const Workspace: React.FC = () => {
 
   return (
     <Container>
-      <DragDropContext onDragEnd={(result: any) => onDragEnd(result, columns)}>
-        {columns.map((item: ColumnType, index: number) => {
-          return <Column key={item.id} item={item} />;
-        })}
-      </DragDropContext>
-      <div>
-        <input type="text" placeholder="Column name" />
-        <button
-          onClick={() =>
-            setColumns([...columns, { id: new Date().toDateString(), name: 'TEST', items: [] }])
-          }>
-          Create new column
-        </button>
-      </div>
+      <ScrollWrapper>
+        <DragDropContext onDragEnd={(result: any) => onDragEnd(result, columns)}>
+          {columns.map((item: ColumnType, index: number) => {
+            return <Column key={item.id} item={item} />;
+          })}
+        </DragDropContext>
+        <CreateColumn columns={columns} handleSetColumns={handleSetColumns} />
+      </ScrollWrapper>
     </Container>
   );
 };
