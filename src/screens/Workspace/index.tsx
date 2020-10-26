@@ -5,7 +5,7 @@ import { Container, ScrollWrapper } from './styles';
 
 import { ColumnType } from './types';
 
-import { Column } from './components/Column/Column';
+import { Column } from './components/Column';
 import { CreateColumn } from './components/CreateColumn';
 
 interface IProps {
@@ -44,17 +44,16 @@ const Workspace: React.FC<IProps> = ({ columnsFromBackend }: IProps) => {
       setColumns(newArray);
     } else {
       // TODO: Change this things
-      const column = columns[source.droppableId];
-      const copiedItems = [...column.items];
-      const [removed] = copiedItems.splice(source.index, 1);
-      copiedItems.splice(destination.index, 0, removed);
-      setColumns({
-        ...columns,
-        [source.droppableId]: {
-          ...column,
-          items: copiedItems,
-        },
-      });
+      const sourceIdx = columns.findIndex((column: ColumnType) => column.id === source.droppableId);
+      const sourceColumn = columns[sourceIdx];
+      const sourceItems = [...sourceColumn.items];
+
+      const [removed] = sourceItems.splice(source.index, 1);
+      sourceItems.splice(destination.index, 0, removed);
+
+      const newArray = [...columns];
+      newArray[sourceIdx].items = sourceItems;
+      setColumns(newArray);
     }
   };
 
