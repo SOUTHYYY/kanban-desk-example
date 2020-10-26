@@ -13,20 +13,30 @@ export const TextArea = styled.textarea`
   min-height: 70px;
 `;
 
-export const Button = styled.button`
+type ButtonProps = {
+  visible: boolean;
+};
+
+export const Button = styled.button<ButtonProps>`
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 5px;
-  background-color: #32a232;
+  padding: 7px;
+  background-color: ${(props: any) => (props.visible ? '#32a232' : 'inherit')};
   border: none;
-  color: #fff;
+  color: ${(props: any) => (props.visible ? '#fff' : '#000')};
   border-radius: 7px;
   cursor: pointer;
-  transition: 0.3s ease;
+
+  &:focus,
+  active {
+    outline: none !important;
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+  }
 
   &:hover {
-    background-color: #3bb03b;
-    transition: 0.3s ease;
+    background-color: ${(props: any) => (props.visible ? '#3bb03b' : 'rgb(192,192,192, 0.2)')};
   }
 `;

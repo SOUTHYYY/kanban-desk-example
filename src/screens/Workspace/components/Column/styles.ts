@@ -10,7 +10,7 @@ export const ColumnContainer = styled.div`
 
 export const ColumnWrapper = styled.div`
   padding: 10px;
-  background-color: lightgrey;
+  background-color: #e8e8e8 !important;
   margin-right: 5px;
   border-radius: 7px;
   background-color: #fff;
