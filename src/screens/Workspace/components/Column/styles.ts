@@ -4,7 +4,7 @@ export const HeaderContainer = styled.div``;
 
 export const ColumnContainer = styled.div`
   width: 250px;
-  min-height: 100px;
+  min-height: 20px;
   border-radius: 7px;
 `;
 

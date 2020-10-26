@@ -1,9 +1,9 @@
-import TextField from '@material-ui/core/TextField/TextField';
 import React from 'react';
 import { ColumnType } from '../../types';
 
-import { Wrapper, Button } from './styles';
+import { Wrapper, Button, Form } from './styles';
 
+import TextField from '@material-ui/core/TextField/TextField';
 import AddIcon from '@material-ui/icons/Add';
 import { Notification } from '../../../../helpers/Notification';
 
@@ -16,11 +16,11 @@ export const CreateColumn: React.FC<IProps> = ({ handleSetColumns, columns }: IP
   const [name, setName] = React.useState<string>('');
   const [open, setOpen] = React.useState<boolean>(false);
   const [notificationText, setNotificationText] = React.useState<string>('');
-  debugger;
 
   const handleSetColumnName = (e: any): void => setName(e.target.value);
 
-  const handleCreateColumn = (): void => {
+  const handleCreateColumn = (e?: any): void => {
+    e.preventDefault();
     if (!name.length) {
       setOpen(true);
       setNotificationText('Please enter name of column!');
@@ -31,23 +31,24 @@ export const CreateColumn: React.FC<IProps> = ({ handleSetColumns, columns }: IP
     setNotificationText('Success!');
     setOpen(true);
   };
-  debugger;
 
   return (
     <>
       <Wrapper>
-        <TextField
-          id="outlined-basic"
-          label="Column Name"
-          variant="outlined"
-          onChange={handleSetColumnName}
-          value={name}
-        />
+        <Form onSubmit={handleCreateColumn}>
+          <TextField
+            id="outlined-basic"
+            label="Column Name"
+            variant="outlined"
+            onChange={handleSetColumnName}
+            value={name}
+          />
 
-        <Button onClick={handleCreateColumn}>
-          <AddIcon />
-          Create new column
-        </Button>
+          <Button onClick={handleCreateColumn}>
+            <AddIcon />
+            Create new column
+          </Button>
+        </Form>
       </Wrapper>
       <Notification isOpen={open} setClose={setOpen} text={notificationText} />
     </>
