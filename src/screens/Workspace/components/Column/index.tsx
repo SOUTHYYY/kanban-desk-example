@@ -2,7 +2,7 @@ import React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import { ColumnType, TaskType } from '../../types';
 import { HeaderContainer, ColumnContainer, ColumnWrapper } from './styles';
-import { Task } from '../Task/Task';
+import { Task } from '../Task';
 
 interface Iprops {
   item: ColumnType;

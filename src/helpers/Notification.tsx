@@ -1,7 +1,7 @@
-import Snackbar from '@material-ui/core/Snackbar/Snackbar';
-
-import Alert from '@material-ui/lab/Alert/Alert';
 import React from 'react';
+
+import Snackbar from '@material-ui/core/Snackbar/Snackbar';
+import Alert from '@material-ui/lab/Alert/Alert';
 
 interface IProps {
   isOpen: boolean;
@@ -23,7 +23,7 @@ export const Notification: React.FC<IProps> = (props: IProps) => {
       <Alert
         onClose={handleClose}
         variant="filled"
-        severity={props.text === 'Success' ? 'success' : 'error'}>
+        severity={props.text === 'Success!' ? 'success' : 'error'}>
         {props.text}
       </Alert>
     </Snackbar>

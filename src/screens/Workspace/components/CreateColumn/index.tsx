@@ -23,12 +23,12 @@ export const CreateColumn: React.FC<IProps> = ({ handleSetColumns, columns }: IP
   const handleCreateColumn = (): void => {
     if (!name.length) {
       setOpen(true);
-      setNotificationText('Some error try again');
+      setNotificationText('Please enter name of column!');
       return;
     }
     handleSetColumns([...columns, { id: new Date().toDateString(), name, items: [] }]);
     setName('');
-    setNotificationText('Success');
+    setNotificationText('Success!');
     setOpen(true);
   };
   debugger;
