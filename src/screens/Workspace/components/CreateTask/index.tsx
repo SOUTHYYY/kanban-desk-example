@@ -41,25 +41,17 @@ export const CreateTask: React.FC<IProps> = (props: IProps) => {
   return (
     <Container>
       {visible && (
-        <>
-          <TextArea
-            autoFocus
-            onChange={handleSetName}
-            value={name}
-            placeholder="Enter name for this task"
-          />
-          <Button onClick={handleCreateTask}>
-            <AddIcon />
-            Add Task
-          </Button>
-        </>
+        <TextArea
+          autoFocus
+          onChange={handleSetName}
+          value={name}
+          placeholder="Enter name for this task"
+        />
       )}
-      {!visible && (
-        <Button onClick={handleSetVisible}>
-          <AddIcon />
-          Create new task
-        </Button>
-      )}
+      <Button onClick={visible ? handleCreateTask : handleSetVisible}>
+        <AddIcon />
+        {visible ? 'Add Task' : 'Create new Task'}
+      </Button>
     </Container>
   );
 };
