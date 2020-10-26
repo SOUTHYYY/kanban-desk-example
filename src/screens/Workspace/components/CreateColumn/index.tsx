@@ -1,8 +1,12 @@
 import React from 'react';
-import { ColumnType } from '../../types';
 
+// Styles
 import { Wrapper, Button, Form } from './styles';
 
+// Types
+import { ColumnType } from '../../types';
+
+// Components
 import TextField from '@material-ui/core/TextField/TextField';
 import AddIcon from '@material-ui/icons/Add';
 import { Notification } from '../../../../helpers/Notification';

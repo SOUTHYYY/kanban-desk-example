@@ -1,13 +1,20 @@
 import React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
-import { ColumnType, TaskType } from '../../types';
+
+// Styles
 import { HeaderContainer, ColumnContainer, ColumnWrapper } from './styles';
 
+// Types
+import { ColumnType, TaskType } from '../../types';
+
+// Components
 import { Task } from '../Task';
 import { CreateTask } from '../CreateTask';
 
 interface Iprops {
   item: ColumnType;
+  columns: ColumnType[];
+  setColumns: (columns: ColumnType[]) => void;
 }
 
 export const Column: React.FC<Iprops> = (props: Iprops) => {
@@ -31,7 +38,7 @@ export const Column: React.FC<Iprops> = (props: Iprops) => {
           }}
         </Droppable>
       </div>
-      <CreateTask />
+      <CreateTask setColumns={props.setColumns} columns={props.columns} columnID={columnId} />
     </ColumnWrapper>
   );
 };

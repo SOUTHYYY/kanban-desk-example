@@ -1,7 +1,11 @@
 import React from 'react';
 import { GlobalStyles } from './GlobalStyles';
-import Workspace from './screens/Workspace';
+
+// Types
 import { ColumnType, TaskType } from './screens/Workspace/types';
+
+// Components
+import Workspace from './screens/Workspace';
 
 const itemsFromBackend: TaskType[] = [
   { id: '1', content: 'First task' },

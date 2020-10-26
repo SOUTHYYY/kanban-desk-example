@@ -1,8 +1,11 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
-import { TaskType } from '../../types';
+// Styles
 import { TaskItem } from './styles';
+
+// Types
+import { TaskType } from '../../types';
 
 interface IProps {
   item: TaskType;

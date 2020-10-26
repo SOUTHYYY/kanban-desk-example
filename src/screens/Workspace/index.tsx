@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 
+// Styles
 import { Container, ScrollWrapper } from './styles';
 
+// Types
 import { ColumnType } from './types';
 
+// Components
 import { Column } from './components/Column';
 import { CreateColumn } from './components/CreateColumn';
 
@@ -62,7 +65,7 @@ const Workspace: React.FC<IProps> = ({ columnsFromBackend }: IProps) => {
       <ScrollWrapper>
         <DragDropContext onDragEnd={(result: any) => onDragEnd(result, columns)}>
           {columns.map((item: ColumnType, index: number) => {
-            return <Column key={item.id} item={item} />;
+            return <Column key={item.id} item={item} columns={columns} setColumns={setColumns} />;
           })}
         </DragDropContext>
         <CreateColumn columns={columns} handleSetColumns={handleSetColumns} />
