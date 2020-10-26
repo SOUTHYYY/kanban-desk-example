@@ -2,7 +2,7 @@ import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
 // Styles
-import { TaskItem } from './styles';
+import { Marker, TaskItem, MarkerContainer } from './styles';
 
 // Types
 import { TaskType } from '../../types';
@@ -25,6 +25,13 @@ export const Task: React.FC<IProps> = ({ item, index }) => {
               ...provided.draggableProps.style,
             }}>
             {item.content}
+            {item.markers.length ? (
+              <MarkerContainer>
+                {item.markers.map((el) => (
+                  <Marker color={el.color}>{el.title}</Marker>
+                ))}
+              </MarkerContainer>
+            ) : null}
           </TaskItem>
         );
       }}

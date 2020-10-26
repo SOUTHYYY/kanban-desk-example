@@ -8,11 +8,18 @@ import { ColumnType, TaskType } from './screens/Workspace/types';
 import Workspace from './screens/Workspace';
 
 const itemsFromBackend: TaskType[] = [
-  { id: '1', content: 'First task' },
-  { id: '12', content: 'Second task' },
-  { id: '123', content: 'Third task' },
-  { id: '1234', content: 'Fourth task' },
-  { id: '12345', content: 'Fifth task' },
+  {
+    id: '1',
+    content: 'Пофиксить обнову',
+    markers: [
+      { title: 'Backend', color: '#BD3FFC' },
+      { title: 'Frontend', color: '#FFC607' },
+      { title: 'СРОЧНО!', color: '#EE2626' },
+      { title: 'Требует доработки', color: '#3F65FC' },
+    ],
+  },
+  { id: '12', content: 'Обновить сервак', markers: [{ title: 'Backend', color: '#BD3FFC' }] },
+  { id: '123', content: 'Добавить валидацию', markers: [{ title: 'Frontend', color: '#FFC607' }] },
 ];
 
 const columnsFromBackend: ColumnType[] = [
