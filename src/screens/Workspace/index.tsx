@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 
 // Styles
 import { Container, ScrollWrapper } from './styles';
@@ -19,7 +19,7 @@ const Workspace: React.FC<IProps> = ({ columnsFromBackend }: IProps) => {
   const [columns, setColumns] = useState(columnsFromBackend);
   const handleSetColumns = (columns: ColumnType[]) => setColumns(columns);
 
-  const onDragEnd = (result: any, columns: ColumnType[]) => {
+  const onDragEnd = (result: DropResult, columns: ColumnType[]) => {
     if (!result.destination) return;
     const { source, destination } = result;
     // Sourse - откуда пришла
@@ -63,7 +63,7 @@ const Workspace: React.FC<IProps> = ({ columnsFromBackend }: IProps) => {
   return (
     <Container>
       <ScrollWrapper>
-        <DragDropContext onDragEnd={(result: any) => onDragEnd(result, columns)}>
+        <DragDropContext onDragEnd={(result: DropResult) => onDragEnd(result, columns)}>
           {columns.map((item: ColumnType, index: number) => {
             return <Column key={item.id} item={item} columns={columns} setColumns={setColumns} />;
           })}

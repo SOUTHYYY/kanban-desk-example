@@ -22,9 +22,9 @@ export const Button = styled.button<ButtonProps>`
   align-items: center;
   width: 100%;
   padding: 7px;
-  background-color: ${(props: any) => (props.visible ? '#32a232' : 'inherit')};
+  background-color: ${(props: ButtonProps) => (props.visible ? '#32a232' : 'inherit')};
   border: none;
-  color: ${(props: any) => (props.visible ? '#fff' : '#000')};
+  color: ${(props: ButtonProps) => (props.visible ? '#fff' : '#000')};
   border-radius: 7px;
   cursor: pointer;
 
@@ -37,6 +37,7 @@ export const Button = styled.button<ButtonProps>`
   }
 
   &:hover {
-    background-color: ${(props: any) => (props.visible ? '#3bb03b' : 'rgb(192,192,192, 0.2)')};
+    background-color: ${(props: ButtonProps) =>
+      props.visible ? '#3bb03b' : 'rgb(192,192,192, 0.2)'};
   }
 `;

@@ -21,9 +21,10 @@ export const CreateColumn: React.FC<IProps> = ({ handleSetColumns, columns }: IP
   const [open, setOpen] = React.useState<boolean>(false);
   const [notificationText, setNotificationText] = React.useState<string>('');
 
-  const handleSetColumnName = (e: any): void => setName(e.target.value);
+  const handleSetColumnName = (e: React.ChangeEvent<HTMLTextAreaElement>): void =>
+    setName(e.target.value);
 
-  const handleCreateColumn = (e?: any): void => {
+  const handleCreateColumn = (e: React.FormEvent): void => {
     e.preventDefault();
     if (!name.length) {
       setOpen(true);

@@ -23,7 +23,7 @@ export const CreateTask: React.FC<IProps> = (props: IProps) => {
   const [open, setOpen] = React.useState<boolean>(false);
   const [notificationText, setNotificationText] = React.useState<string>('');
 
-  const handleSetName = (e: any) => setName(e.target.value);
+  const handleSetName = (e: React.ChangeEvent<HTMLTextAreaElement>) => setName(e.target.value);
 
   const handleSetVisible = () => setVisible(true);
   const handleSetUnVisible = () => setVisible(false);

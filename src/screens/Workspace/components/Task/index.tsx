@@ -1,5 +1,5 @@
 import React from 'react';
-import { Draggable } from 'react-beautiful-dnd';
+import { Draggable, DraggableProvided, DraggableStateSnapshot } from 'react-beautiful-dnd';
 
 // Styles
 import {
@@ -39,7 +39,7 @@ export const Task: React.FC<IProps> = ({ item, index }) => {
 
   return (
     <Draggable draggableId={item.id} index={index}>
-      {(provided: any, snapshot: any) => {
+      {(provided: DraggableProvided, _: DraggableStateSnapshot) => {
         return (
           <TaskItem
             ref={provided.innerRef}

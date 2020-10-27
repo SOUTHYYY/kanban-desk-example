@@ -1,5 +1,5 @@
 import React from 'react';
-import { Droppable } from 'react-beautiful-dnd';
+import { Droppable, DroppableProvided, DroppableStateSnapshot } from 'react-beautiful-dnd';
 
 // Styles
 import { HeaderContainer, ColumnContainer, ColumnWrapper } from './styles';
@@ -26,7 +26,7 @@ export const Column: React.FC<Iprops> = (props: Iprops) => {
       </HeaderContainer>
 
       <Droppable droppableId={columnId} key={columnId}>
-        {(provided: any, snapshot: any) => {
+        {(provided: DroppableProvided, _: DroppableStateSnapshot) => {
           return (
             <ColumnContainer {...provided.droppableProps} ref={provided.innerRef}>
               {items.map((item: TaskType, index: number) => {
