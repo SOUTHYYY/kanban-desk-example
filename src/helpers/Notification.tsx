@@ -14,9 +14,9 @@ interface IProps<T> {
   text: T | '';
 }
 
-export const Notification: React.FC<IProps<CreateTaskTextType | CreateColumnTextType>> = (
-  props,
-) => {
+type CreateTextTypes = CreateTaskTextType | CreateColumnTextType;
+
+export const Notification = <T extends CreateTextTypes>(props: IProps<T>) => {
   const handleClose = () => {
     setTimeout(() => props.setClose(false), 2000);
   };
