@@ -10,8 +10,9 @@ export const ColumnContainer = styled.div`
 
 export const ColumnWrapper = styled.div`
   padding: 10px;
-  background-color: #e8e8e8 !important;
+  background-color: #eeeeee !important;
   margin-right: 5px;
   border-radius: 7px;
   background-color: #fff;
+  box-shadow: 0 4px 2px -2px gray;
 `;
