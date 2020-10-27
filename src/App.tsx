@@ -11,6 +11,8 @@ const itemsFromBackend: TaskType[] = [
   {
     id: '1',
     content: 'Пофиксить обнову',
+    date: new Date(),
+    comment: '',
     markers: [
       { title: 'Backend', color: '#BD3FFC' },
       { title: 'Frontend', color: '#FFC607' },
@@ -18,8 +20,20 @@ const itemsFromBackend: TaskType[] = [
       { title: 'Требует доработки', color: '#3F65FC' },
     ],
   },
-  { id: '12', content: 'Обновить сервак', markers: [{ title: 'Backend', color: '#BD3FFC' }] },
-  { id: '123', content: 'Добавить валидацию', markers: [{ title: 'Frontend', color: '#FFC607' }] },
+  {
+    id: '12',
+    content: 'Обновить сервак',
+    date: new Date(),
+    comment: '',
+    markers: [{ title: 'Backend', color: '#BD3FFC' }],
+  },
+  {
+    id: '123',
+    content: 'Добавить валидацию',
+    date: new Date(),
+    comment: '',
+    markers: [{ title: 'Frontend', color: '#FFC607' }],
+  },
 ];
 
 const columnsFromBackend: ColumnType[] = [

@@ -6,6 +6,8 @@ export type MarkerType = {
 export type TaskType = {
   id: string;
   content: string;
+  date: Date;
+  comment: string;
   markers: MarkerType[];
 };
 

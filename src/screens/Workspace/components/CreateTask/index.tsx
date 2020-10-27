@@ -4,7 +4,7 @@ import React from 'react';
 import { Container, TextArea, Button } from './styles';
 
 // Types
-import { ColumnType } from '../../types';
+import { ColumnType, TaskType } from '../../types';
 
 // Compnents
 import AddIcon from '@material-ui/icons/Add';
@@ -38,8 +38,15 @@ export const CreateTask: React.FC<IProps> = (props: IProps) => {
     let newArray = [...props.columns];
 
     const items = newArray[idx].items;
+    const newItem: TaskType = {
+      id: new Date().toString(),
+      content: name,
+      markers: [],
+      comment: '',
+      date: new Date(),
+    };
 
-    newArray[idx].items = [...items, { id: new Date().toString(), content: name, markers: [] }];
+    newArray[idx].items = [...items, newItem];
 
     props.setColumns(newArray);
 
