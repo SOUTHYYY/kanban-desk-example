@@ -16,12 +16,14 @@ interface IProps {
   setColumns: (columns: ColumnType[]) => void;
 }
 
+export type CreateTaskTextType = 'Please enter the task name!' | 'Success!';
+
 export const CreateTask: React.FC<IProps> = (props: IProps) => {
   const [name, setName] = React.useState<string>('');
   const [visible, setVisible] = React.useState(false);
 
   const [open, setOpen] = React.useState<boolean>(false);
-  const [notificationText, setNotificationText] = React.useState<string>('');
+  const [notificationText, setNotificationText] = React.useState<CreateTaskTextType | ''>('');
 
   const handleSetName = (e: React.ChangeEvent<HTMLTextAreaElement>) => setName(e.target.value);
 

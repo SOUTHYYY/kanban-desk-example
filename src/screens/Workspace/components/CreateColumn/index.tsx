@@ -16,10 +16,12 @@ interface IProps {
   columns: ColumnType[];
 }
 
+export type CreateColumnTextType = 'Please enter name of column!' | 'Success!';
+
 export const CreateColumn: React.FC<IProps> = ({ handleSetColumns, columns }: IProps) => {
   const [name, setName] = React.useState<string>('');
   const [open, setOpen] = React.useState<boolean>(false);
-  const [notificationText, setNotificationText] = React.useState<string>('');
+  const [notificationText, setNotificationText] = React.useState<CreateColumnTextType | ''>('');
 
   const handleSetColumnName = (e: React.ChangeEvent<HTMLTextAreaElement>): void =>
     setName(e.target.value);
