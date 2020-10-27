@@ -19,6 +19,7 @@ interface Iprops {
 
 export const Column: React.FC<Iprops> = (props: Iprops) => {
   const { name, id: columnId, items } = props.item;
+
   return (
     <ColumnWrapper>
       <HeaderContainer>
@@ -30,7 +31,16 @@ export const Column: React.FC<Iprops> = (props: Iprops) => {
           return (
             <ColumnContainer {...provided.droppableProps} ref={provided.innerRef}>
               {items.map((item: TaskType, index: number) => {
-                return <Task key={item.id} item={item} index={index} />;
+                return (
+                  <Task
+                    key={item.id}
+                    item={item}
+                    index={index}
+                    columns={props.columns}
+                    columnID={columnId}
+                    setColumns={props.setColumns}
+                  />
+                );
               })}
               {provided.placeholder}
             </ColumnContainer>

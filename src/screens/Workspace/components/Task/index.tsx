@@ -17,7 +17,7 @@ import {
 } from './styles';
 
 // Types
-import { TaskType } from '../../types';
+import { TaskType, ColumnType } from '../../types';
 
 // Components
 import Menu from '@material-ui/core/Menu';
@@ -26,9 +26,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 interface IProps {
   item: TaskType;
   index: number;
+  columns: ColumnType[];
+  columnID: string;
+  setColumns: (columns: ColumnType[]) => void;
 }
 
-export const Task: React.FC<IProps> = ({ item, index }) => {
+export const Task: React.FC<IProps> = ({ item, index, columns, columnID, setColumns }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -36,6 +39,16 @@ export const Task: React.FC<IProps> = ({ item, index }) => {
   };
 
   const handleClose = () => setAnchorEl(null);
+
+  const handleRemoveTask = () => {
+    let newArray = [...columns];
+
+    const columnIdx = columns.findIndex((el) => el.id === columnID);
+    const taskIdx = columns[columnIdx].items.findIndex((el) => el.id === item.id);
+
+    newArray[columnIdx].items.splice(taskIdx, 1);
+    setColumns(newArray);
+  };
 
   return (
     <Draggable draggableId={item.id} index={index}>
@@ -62,7 +75,7 @@ export const Task: React.FC<IProps> = ({ item, index }) => {
                 onClose={handleClose}>
                 <MenuItem onClick={handleClose}>Change task</MenuItem>
                 <MenuItem onClick={handleClose}>Add marker</MenuItem>
-                <MenuItem onClick={handleClose}>Remove</MenuItem>
+                <MenuItem onClick={handleRemoveTask}>Remove</MenuItem>
               </Menu>
             </TopInfo>
 
