@@ -24,20 +24,20 @@ export const Column: React.FC<Iprops> = (props: Iprops) => {
       <HeaderContainer>
         <h3>{name}</h3>
       </HeaderContainer>
-      <div style={{ margin: 8 }}>
-        <Droppable droppableId={columnId} key={columnId}>
-          {(provided: any, snapshot: any) => {
-            return (
-              <ColumnContainer {...provided.droppableProps} ref={provided.innerRef}>
-                {items.map((item: TaskType, index: number) => {
-                  return <Task key={item.id} item={item} index={index} />;
-                })}
-                {provided.placeholder}
-              </ColumnContainer>
-            );
-          }}
-        </Droppable>
-      </div>
+
+      <Droppable droppableId={columnId} key={columnId}>
+        {(provided: any, snapshot: any) => {
+          return (
+            <ColumnContainer {...provided.droppableProps} ref={provided.innerRef}>
+              {items.map((item: TaskType, index: number) => {
+                return <Task key={item.id} item={item} index={index} />;
+              })}
+              {provided.placeholder}
+            </ColumnContainer>
+          );
+        }}
+      </Droppable>
+
       <CreateTask setColumns={props.setColumns} columns={props.columns} columnID={columnId} />
     </ColumnWrapper>
   );
